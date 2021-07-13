@@ -1,0 +1,17 @@
+.counter-button {
+    border: none;
+    border-radius: 100px;
+    padding: 5px 15px;
+    cursor: pointer;
+    outline: none;
+}
+
+.primary {
+    background: #2b96e6;
+    color: white;
+}
+
+.secondary {
+    background: lightgray;
+    color: black;
+}
