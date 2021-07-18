@@ -13,6 +13,10 @@ export default function Counter() {
         setValue(value - 1);
     }
 
+    function reset() {
+        setValue(0); }
+    
+
     return (
         <div>
             <CounterInput
@@ -22,6 +26,7 @@ export default function Counter() {
             />
             <CounterButton label="+" type="primary" click={add} />
             <CounterButton label="-" type="secondary" click={sub} />
+            <CounterButton label="Reset" type="reset" click={reset} />           
         </div>
     );
 }
