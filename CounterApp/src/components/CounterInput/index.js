@@ -6,7 +6,7 @@ export default function CounterInput({
     value
 }) {
     function handleChange(e) {
-        setValue(e.target.value);
+        setValue(Number(e.target.value));
     }
 
     return (

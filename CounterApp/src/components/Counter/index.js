@@ -1,8 +1,9 @@
-import react, { useState } from 'react';
+import react, { useEffect, useState } from 'react';
 import CounterButton from '../CounterButton';
 import CounterInput from '../CounterInput';
+import './styles.css';
 
-export default function Counter() {
+export default function Counter({ counterName, valueChange }) {
     const [value, setValue] = useState(0);
 
     function add() {
@@ -14,11 +15,16 @@ export default function Counter() {
     }
 
     function reset() {
-        setValue(0); }
-    
+        setValue(0);
+    }
+
+    useEffect(() => {
+        valueChange(value);
+    }, [value])
 
     return (
         <div>
+            <h2 className="counter-name">{counterName}</h2>
             <CounterInput
                 value={value}
                 type="number"
