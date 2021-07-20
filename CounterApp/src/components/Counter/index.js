@@ -3,8 +3,9 @@ import CounterButton from '../CounterButton';
 import CounterInput from '../CounterInput';
 import './styles.css';
 
-export default function Counter({ counterName, valueChange }) {
+export default function Counter({ counterName, valueChange, excluirCounter, nameChange}) {
     const [value, setValue] = useState(0);
+    const [name, setName] = useState(counterName);
 
     function add() {
         setValue(value + 1);
@@ -18,13 +19,22 @@ export default function Counter({ counterName, valueChange }) {
         setValue(0);
     }
 
+    function excluir(){
+        excluirCounter();
+    }
+
     useEffect(() => {
         valueChange(value);
     }, [value])
 
+    useEffect(() => {
+        nameChange(name);
+    }, [name])
+
     return (
         <div>
-            <h2 className="counter-name">{counterName}</h2>
+            <input type="text" value={name} onChange={e => setName(e.target.value)}
+           />
             <CounterInput
                 value={value}
                 type="number"
@@ -32,7 +42,8 @@ export default function Counter({ counterName, valueChange }) {
             />
             <CounterButton label="+" type="primary" click={add} />
             <CounterButton label="-" type="secondary" click={sub} />
-            <CounterButton label="Reset" type="reset" click={reset} />           
+            <CounterButton label="Reset" type="primary" click={reset} />     
+            <CounterButton label="Excluir" type="primary" click={excluir} />         
         </div>
     );
 }
